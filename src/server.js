@@ -12,15 +12,12 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
-    res.status(200).json({
-        estado: 'Éxito',
-        mensaje: 'Capa de servicios funcionando correctamente.'
-    });
-});
+const hpRoutes = require('./routes/hpRoutes');
+app.use('/api/hp', hpRoutes);
 
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
     console.log(`Servidor intermediario ejecutándose en http://localhost:${PORT}`);
 });
+
