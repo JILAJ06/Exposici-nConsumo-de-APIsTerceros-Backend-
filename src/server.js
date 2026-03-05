@@ -1,3 +1,6 @@
+const hpRoutes = require('./routes/hpRoutes');
+const PORT = process.env.PORT || 3001;
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config(); 
@@ -12,10 +15,7 @@ app.use(cors({
 
 app.use(express.json());
 
-const hpRoutes = require('./routes/hpRoutes');
 app.use('/api/hp', hpRoutes);
-
-const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
     console.log(`Servidor intermediario ejecutándose en http://localhost:${PORT}`);
