@@ -1,3 +1,6 @@
+const hpRoutes = require('./routes/hpRoutes');
+const PORT = process.env.PORT || 3001;
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config(); 
@@ -12,15 +15,9 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
-    res.status(200).json({
-        estado: 'Éxito',
-        mensaje: 'Capa de servicios funcionando correctamente.'
-    });
-});
-
-const PORT = process.env.PORT || 3001;
+app.use('/api/hp', hpRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor intermediario ejecutándose en http://localhost:${PORT}`);
 });
+
